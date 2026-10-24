@@ -1,36 +1,44 @@
 export default defineEventHandler(async (event) => {
-    const body = await readBody(event)
+  const body = await readBody(event);
 
-  if(body){
-    var result = operation(body.listNumbers, body.search)
-     return {
-    success: true,
-    data:result
+  if (body) {
+    var result = operation(body.listNumbers, body.search);
+    return {
+      success: true,
+      data: result,
+    };
   }
-  }
- 
-})
+});
 
-export function operation(numbers:String,seachrNUmber:number ) {
-    var suma; 
-    var listNumbers = numbers.split(',').map(Number).filter((it) => it < seachrNUmber);
+export function operation(numbers: String, seachrNumber: number) {
+  var listNumbers = numbers
+    .split(",")
+    .map(Number)
+    .filter((it) => it < seachrNumber);
+  let n = listNumbers.length;
+  let totalNumberComb = 1 << n;
+  let usedIndex = new Set<Number>();
+  let result: string[] = [];
 
-    let result = []
-    // var temp = false;
-    for (let index = 0; index < listNumbers.length; index++) {
-        // temp = false;
-        for (let tempIndex = index + 1; tempIndex < listNumbers.length; tempIndex++) {
-            // suma = (valorLimpio[index] + valorLimpio[tempIndex]);
-            // temp = suma == seachrNUmber
-            // console.log("[" + index + "," + tempIndex, "] => " + valorLimpio[index] + " + " + valorLimpio[tempIndex] + " = " + suma + " " + temp)
-            
-            suma =listNumbers[index] + listNumbers[tempIndex];
+  for (let index = 1; index < totalNumberComb; index++) {
+    var sum = 0;
+    let tem: number[] = [];
+    let tempIndex: number[] = [];
 
-            if (suma == seachrNUmber) {
-                result.push(listNumbers[index] + "+" + listNumbers[tempIndex] + "="+suma)
-                // temp = true
-            }
-        }
+    for (let j = 0; j < n; j++) {
+      if ((index & (1 << j)) !== 0) {
+        sum += listNumbers[j];
+        tem.push(listNumbers[j]);
+        tempIndex.push(j);
+      }
     }
-    return result;
+    if (sum === Number(seachrNumber)) {
+      const used = tempIndex.some((it) => usedIndex.has(it));
+      if (!used) {
+        result.push(tem.join("+") + `=${sum}`);
+        tempIndex.forEach((it) => usedIndex.add(it));
+      }
+    }
+  }
+  return result;
 }

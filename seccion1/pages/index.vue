@@ -42,7 +42,7 @@
 
                 <div v-if="findNumberSumResult != [] && findNumberSumResult != null">
                     TRUE (Porque {{ findNumberSumResult }} )
-                   
+
                 </div>
 
                 <div v-if="findNumberSumResult == []">
@@ -65,7 +65,7 @@ const reversedWordResult = ref('')
 const uniquePairsInput = ref('')
 const uniquePairsResult = ref('')
 
-// EJERCIO 3
+// EJERCIO 4
 const listNumbersInput = ref('')
 const searchInput = ref('')
 const findNumberSumResult = ref('')
@@ -117,58 +117,4 @@ const findNumberSum = async (paramNumbers, paramSearch) => {
     }
 }
 
-onMounted(() => {
-
-    // var valor = '2,7,9,12,33,15,22,12,4,2,7';
-    // valor.trim().replace(/^,+|,+$/g,"").replace(/ {1,}/g, "")
-    // var oki = Array.from(new Set(valor.split(","))).filter((it) => it % 2 === 0);
-
-    // console.log(oki)
-    // var listNumbers = [4,8,48,44,1];
-    // var seachrNUmber = 11;
-
-    // var suma;
-    // var valorLimpio = listNumbers.filter((it) => it < seachrNUmber);
-    // let candidatos = []
-    // var temp = false;
-    // for (let index = 0; index < valorLimpio.length; index++) {
-    //     temp = false;
-    //     for (let tempIndex = index + 1; tempIndex < valorLimpio.length; tempIndex++) {
-    //         // suma = (valorLimpio[index] + valorLimpio[tempIndex]);
-    //         // temp = suma == seachrNUmber
-    //         // console.log("[" + index + "," + tempIndex, "] => " + valorLimpio[index] + " + " + valorLimpio[tempIndex] + " = " + suma + " " + temp)
-
-    //         if ((valorLimpio[index] + valorLimpio[tempIndex]) == seachrNUmber) {
-    //             candidatos.push(valorLimpio[index] + "+" + valorLimpio[tempIndex] + "")
-    //             temp = true
-    //         }
-    //     }
-    // }
-    // console.log("RESULTADO ", candidatos)
-
-    // for (let index = 0; index < valorLimpio.length; index++) {
-    //     temp = false;
-    //     for (let tempIndex = index + 1; tempIndex < valorLimpio.length; tempIndex++) {
-
-    //         suma = (valorLimpio[index] + valorLimpio[tempIndex]);
-    //         temp = suma == seachrNUmber
-    //         console.log("[" + index + "," + tempIndex, "] => " + valorLimpio[index] + " + " + valorLimpio[tempIndex] + " = " + suma + " " + temp)
-
-    //         if ((valorLimpio[index] + valorLimpio[tempIndex]) == seachrNUmber) {
-    //             candidatos.push("[" + valorLimpio[index] + "," + valorLimpio[tempIndex] + "]")
-    //             temp = true
-    //         }
-    //     }
-    // }
-    // console.log("RESULTADO ", candidatos)
-
-    // for (let index = 0, reverIndex = listNumbers.length; index < listNumbers.length && reverIndex == -1; index++, reverIndex--) {
-    //     if (listNumbers[1]) {
-
-    //     }
-    //     console.log()
-
-    // }
-
-})
 </script>
